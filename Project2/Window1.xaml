@@ -1,0 +1,127 @@
+﻿<Window x:Class="Project2.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:local="clr-namespace:Project2"
+        mc:Ignorable="d"
+        Title="Работа с темами" Height="500" Width="850"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+      
+        <StackPanel Grid.Row="0" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="10">
+            <Button x:Name="fileDataBtn" 
+                    Content="Отобразить данные из файла" 
+                    Margin="5" 
+                    Padding="10 5"
+                    Click="fileDataBtn_Click"/>
+
+            <Button x:Name="addDataBtn" 
+                    Content="Добавить новую тему" 
+                    Margin="5" 
+                    Padding="10 5"
+                    Click="addDataBtn_Click"/>
+
+            <Button x:Name="deleteTopicBtn" 
+                    Content="Удалить тему" 
+                    Margin="5" 
+                    Padding="10 5"
+                    Click="deleteTopicBtn_Click"/>
+
+            <Button x:Name="backBtn" 
+                    Content="Назад" 
+                    Margin="5" 
+                    Padding="10 5"
+                    Click="backBtn_Click"/>
+        </StackPanel>
+
+        
+        <ListView Grid.Row="1" 
+                  Name="topicList" 
+                  Margin="10"
+                  ItemsSource="{Binding Topics}">
+        
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя студента" 
+                                    Width="266" 
+                                    DisplayMemberBinding="{Binding StudentName}"/>
+
+                    <GridViewColumn Header="Тема" 
+                                    Width="266" 
+                                    DisplayMemberBinding="{Binding TopicName}"/>
+
+                    <GridViewColumn Header="Дата" 
+                                    Width="260" 
+                                    DisplayMemberBinding="{Binding Date, StringFormat='yyyy.MM.dd'}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        
+        <Border x:Name="Overlay" 
+                Grid.RowSpan="2"
+                Background="#80000000" 
+                Visibility="Collapsed"
+                Panel.ZIndex="1"/>
+
+        <Popup x:Name="AddPopup" 
+               Placement="Center"
+               PopupAnimation="Fade"
+               AllowsTransparency="True"
+               StaysOpen="False"
+               IsOpen="False"
+            Panel.ZIndex="2">
+
+            <Border Background="White" 
+                    BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    CornerRadius="5"
+                    Padding="20"
+                    Width="350">
+
+                <StackPanel>
+                    <TextBlock Text="Добавить новую тему" 
+                               FontSize="16" FontWeight="Bold" 
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Имя студента:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="PopupStudentName" 
+                             Height="25" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Название темы:" Margin="0,0,0,5"/>
+                    <TextBox x:Name="PopupTopicName" 
+                             Height="25" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Дата:" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="PopupDate" 
+                                Height="25" Margin="0,0,0,20"
+                                SelectedDate="{Binding Date, Mode=TwoWay}"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Сохранить" 
+                                Width="100" Height="30" 
+                                Margin="5"
+                                Click="PopupSave_Click"/>
+                        <Button Content="Отмена" 
+                                Width="100" Height="30" 
+                                Margin="5"
+                                Click="PopupCancel_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</Window>
