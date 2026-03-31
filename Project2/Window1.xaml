@@ -15,7 +15,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-      
         <StackPanel Grid.Row="0" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
@@ -45,12 +44,12 @@
                     Click="backBtn_Click"/>
         </StackPanel>
 
-        
+
         <ListView Grid.Row="1" 
                   Name="topicList" 
                   Margin="10"
                   ItemsSource="{Binding Topics}">
-        
+
 
             <ListView.View>
                 <GridView>
@@ -69,7 +68,6 @@
             </ListView.View>
         </ListView>
 
-        
         <Border x:Name="Overlay" 
                 Grid.RowSpan="2"
                 Background="#80000000" 

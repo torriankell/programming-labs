@@ -10,22 +10,4 @@
         this.TopicName = topicName;
         this.Date = date;
     }
-
-    public static Topic? CreateObjectFromString(string rec)
-    {
-        string[] buffer = rec.Split(';');
-        if (buffer.Length != 3)
-        {
-            return null;
-        }
-
-        if (!DateOnly.TryParseExact(buffer[2].Trim(), "yyyy.MM.dd",
-            System.Globalization.CultureInfo.InvariantCulture,
-            System.Globalization.DateTimeStyles.None, out DateOnly date))
-        {
-            return null;
-        }
-
-        return new Topic(buffer[0].Trim(), buffer[1].Trim(), date);
-    }
 }

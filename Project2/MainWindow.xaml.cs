@@ -8,10 +8,9 @@ namespace Project2
         public static Window1 workWindow = null;
         public static Window2 helpWindow = null;
 
-        public MainWindow()
-        {
+        public MainWindow() =>
             InitializeComponent();
-        }
+        
 
         private void workBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -32,9 +31,7 @@ namespace Project2
             }
         }
 
-        private void exitBtn_Click(object sender, RoutedEventArgs e)
-        {
+        private void exitBtn_Click(object sender, RoutedEventArgs e) =>
             Application.Current.Shutdown();
-        }
     }
 }

@@ -22,3 +22,4 @@ C:\Users\User\source\repos\Project2\Project2\obj\Debug\net8.0-windows\Window1.g.
 C:\Users\User\source\repos\Project2\Project2\obj\Debug\net8.0-windows\Window1.baml
 C:\Users\User\source\repos\Project2\Project2\obj\Debug\net8.0-windows\Window2.g.cs
 C:\Users\User\source\repos\Project2\Project2\obj\Debug\net8.0-windows\Window2.baml
+C:\Users\User\source\repos\Project2\Project2\obj\Debug\net8.0-windows\Project2.sourcelink.json

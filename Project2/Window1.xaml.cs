@@ -1,39 +1,58 @@
-﻿using System;
-using System.Collections;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Windows;
+using Microsoft.Win32;
 
 namespace Project2
 {
     public partial class Window1 : Window
     {
+        private const string LOG_PATH = "C:\\Users\\User\\source\\repos\\Project2\\Project2\\WriterLog.txt";
+
         public ObservableCollection<Topic> Topics { get; set; }
+        private Logger logger;
 
         public Window1()
         {
             InitializeComponent();
+           
             Topics = new ObservableCollection<Topic>();
             topicList.ItemsSource = Topics;
+
+            this.Closing += Window1_Closing;
         }
 
         private void fileDataBtn_Click(object sender, RoutedEventArgs e)
         {
-            string filePath = "C:\\Users\\User\\source\\repos\\Project2\\Project2\\data.txt";
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Текстовые файлы|*.txt";
+            if (openFileDialog.ShowDialog() == false)
+                return;
+
+            string filePath = openFileDialog.FileName;
             if (Topics.Count > 0)
                 Topics.Clear();
 
             try
             {
-                using (StreamReader sReader = new StreamReader(filePath, Encoding.UTF8))
+                using (StreamReader sReader = new(filePath, Encoding.UTF8))
                 {
+                    int c = 0;
+                    logger = new(LOG_PATH);
                     string? line;
                     while ((line = sReader.ReadLine()) != null)
                     {
-                        Topic t = Topic.CreateObjectFromString(line);
-                        if (t != null)
+                        c++;
+                        try
+                        {
+                            Topic? t = TopicParser.BuildTopicFromStrings(line);
                             Topics.Add(t);
+                        }
+                        catch(Exception ex) 
+                        {
+                            logger.WriteLogLine($"[{logger.Counter}] Ошибка в строке {c}: {ex.Message}. Строка: {line}");
+                        }
                     }
                 }
 
@@ -49,6 +68,10 @@ namespace Project2
             {
                 MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка",
                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                logger?.Dispose();
             }
         }
 
@@ -96,20 +119,18 @@ namespace Project2
             AddPopup.IsOpen = false;
             Overlay.Visibility = Visibility.Collapsed;
         }
+
         private void deleteTopicBtn_Click(object sender, RoutedEventArgs e)
         {
             if (topicList.SelectedItem != null)
             {
                
                 Topic selectedTopic = (Topic)topicList.SelectedItem;
-
                 Topics.Remove(selectedTopic);
             }
             else
-            {
                 MessageBox.Show("Выберите тему для удаления", "Предупреждение",
                               MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
@@ -117,5 +138,8 @@ namespace Project2
             MainWindow.workWindow = null;
             Close();
         }
+
+        private void Window1_Closing(object sender, System.ComponentModel.CancelEventArgs e) =>
+            MainWindow.workWindow = null;
     }
 }
