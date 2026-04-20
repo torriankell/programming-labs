@@ -1,0 +1,6 @@
+;Math;1984.12.12
+Pavel Victor;Math;1984.12.12
+Dolores Haze;Science;2000.12.12
+Tommy Vercetti;Business;
+hacker1337
+;;;;
