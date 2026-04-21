@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
-        xmlns:local="clr-namespace:Project2"
+        xmlns:local="clr-namespace:Project2" d:DataContext="{d:DesignInstance Type=local:TopicViewModel}"
         mc:Ignorable="d"
         Title="Работа с темами" Height="500" Width="850"
         WindowStartupLocation="CenterScreen">
@@ -24,32 +24,34 @@
                     Content="Отобразить данные из файла" 
                     Margin="5" 
                     Padding="10 5"
-                    Click="fileDataBtn_Click"/>
+                    Command="{Binding LoadTopicCommand}"/>
 
             <Button x:Name="addDataBtn" 
                     Content="Добавить новую тему" 
                     Margin="5" 
                     Padding="10 5"
-                    Click="addDataBtn_Click"/>
+                    Command="{Binding OpenAddPopupCommand}"/>
 
             <Button x:Name="deleteTopicBtn" 
                     Content="Удалить тему" 
                     Margin="5" 
                     Padding="10 5"
-                    Click="deleteTopicBtn_Click"/>
+                    Command="{Binding RemoveTopicCommand}"/>
 
             <Button x:Name="backBtn" 
                     Content="Назад" 
                     Margin="5" 
                     Padding="10 5"
-                    Click="backBtn_Click"/>
+                    Command="{Binding CloseMainWindowCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
         </StackPanel>
 
 
         <ListView Grid.Row="1" 
                   Name="topicList" 
                   Margin="10"
-                  ItemsSource="{Binding Topics}">
+                  ItemsSource="{Binding Topics}"
+                  SelectedItem="{Binding SelectedTopic, Mode=TwoWay}">
 
 
             <ListView.View>
@@ -72,18 +74,31 @@
         <Border x:Name="Overlay" 
                 Grid.RowSpan="2"
                 Background="#80000000" 
-                Visibility="Collapsed"
-                Panel.ZIndex="1"/>
+                Panel.ZIndex="1"
+                Visibility="{Binding OverlayVisibility}"/>
 
-        <Border Grid.Row="3"
-            Margin="5"
-            BorderBrush="Black" 
-            BorderThickness="1" 
-            CornerRadius="2" 
-            Padding="10">
-            <TextBlock x:Name="logTextBlock" 
-               
-               TextWrapping="Wrap"/>
+        <Border Grid.Row="2"
+        Margin="5"
+        BorderBrush="Black" 
+        BorderThickness="1" 
+        CornerRadius="2" 
+        Padding="0">
+            <ListBox ItemsSource="{Binding LogEntries}"
+             BorderThickness="0"
+             Padding="0"
+             HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="LightGray" 
+                        BorderThickness="0,0,0,1" 
+                        Padding="1,2">
+                            <TextBlock Text="{Binding}" 
+                               TextWrapping="Wrap"
+                               FontSize="12"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Border>
 
         <Popup x:Name="AddPopup" 
@@ -91,7 +106,7 @@
                PopupAnimation="Fade"
                AllowsTransparency="True"
                StaysOpen="False"
-               IsOpen="False"
+               IsOpen="{Binding IsAddPopupOpen}"
             Panel.ZIndex="2">
 
             <Border Background="White" 
@@ -109,26 +124,26 @@
 
                     <TextBlock Text="Имя студента:" Margin="0,0,0,5"/>
                     <TextBox x:Name="PopupStudentName" 
-                             Height="25" Margin="0,0,0,10"/>
+                             Height="25" Margin="0,0,0,10" Text="{Binding NewStudentName}"/>
 
                     <TextBlock Text="Название темы:" Margin="0,0,0,5"/>
                     <TextBox x:Name="PopupTopicName" 
-                             Height="25" Margin="0,0,0,10"/>
+                             Height="25" Margin="0,0,0,10" Text="{Binding NewTopicName}"/>
 
                     <TextBlock Text="Дата:" Margin="0,0,0,5"/>
                     <DatePicker x:Name="PopupDate" 
                                 Height="25" Margin="0,0,0,20"
-                                SelectedDate="{Binding Date, Mode=TwoWay}"/>
+                                SelectedDate="{Binding NewDate, Mode=TwoWay}"/>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="Сохранить" 
                                 Width="100" Height="30" 
                                 Margin="5"
-                                Click="PopupSave_Click"/>
+                                Command="{Binding SaveNewTopicCommand}"/>
                         <Button Content="Отмена" 
                                 Width="100" Height="30" 
                                 Margin="5"
-                                Click="PopupCancel_Click"/>
+                                Command="{Binding CancelAddCommand}"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

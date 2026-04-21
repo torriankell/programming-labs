@@ -13,7 +13,7 @@ public class Topic : INotifyPropertyChanged
         set
         {
             _studentName = value;
-            OnPropertyChanged("StudentName");
+            OnPropertyChanged();
         }
     }
 
@@ -23,7 +23,7 @@ public class Topic : INotifyPropertyChanged
         set
         {
             _topicName = value;
-            OnPropertyChanged("TopicName");
+            OnPropertyChanged();
         }
     }
 
@@ -33,8 +33,19 @@ public class Topic : INotifyPropertyChanged
         set
         {
             _date = value;
-            OnPropertyChanged("Date");
+            OnPropertyChanged();
         }
+    }
+
+    public Topic()
+    {
+
+    }
+    public Topic(string studentName, string topicName, DateOnly date)
+    {
+        StudentName = studentName;
+        TopicName = topicName;
+        Date = date;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
