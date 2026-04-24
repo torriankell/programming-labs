@@ -1,0 +1,2 @@
+REM StudentName == Pavel Victor
+SAVE result.txt

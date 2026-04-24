@@ -20,6 +20,11 @@
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
                     Margin="10">
+            <Button x:Name="executeComBtn"
+                    Content="Выполнить команды из файла"
+                     Margin="5" 
+                    Padding="10 5"
+                    Command="{Binding HandleFileWCommandsCommand}"/>
             <Button x:Name="fileDataBtn" 
                     Content="Отобразить данные из файла" 
                     Margin="5" 

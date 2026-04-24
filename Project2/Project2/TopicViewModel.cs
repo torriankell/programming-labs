@@ -17,10 +17,9 @@ namespace Project2
         private RelayCommand _openAddPopupCommand;
         private RelayCommand _saveNewTopicCommand;
         private RelayCommand _cancelAddCommand;
+        private RelayCommand _handleFileWCommandsCommand;
 
         private Topic _topic;
-
-        private string _logMessages;
 
         private bool _isAddPopupOpen;
         public bool IsAddPopupOpen
@@ -63,6 +62,10 @@ namespace Project2
 
         public RelayCommand CloseMainWindowCommand { get; set; }
 
+        public RelayCommand HandleFileWCommandsCommand
+        {
+            get => _handleFileWCommandsCommand ?? (_handleFileWCommandsCommand = new RelayCommand(ExecuteHandleCommands));
+        }
         public RelayCommand SaveNewTopicCommand
         {
             get => _saveNewTopicCommand ?? (_saveNewTopicCommand = new RelayCommand(ExecuteSaveNewTopic));
@@ -108,7 +111,10 @@ namespace Project2
 
             string filePath = openFileDialog.FileName;
             if (Topics.Count > 0)
+            {
                 Topics.Clear();
+                SelectedTopic = null;
+            }
 
             try
             {
@@ -128,7 +134,7 @@ namespace Project2
                         }
                         catch (Exception ex)
                         {
-                            string error = $"[{logger.Counter}] Ошибка в строке {c}: {ex.Message}. Строка: {line}";
+                            string error = $"Ошибка в строке {c}: {ex.Message}. Строка: {line}";
                             logger.WriteLogLine(error);
                             LogEntries.Add(error + '\n');
                         }
@@ -175,6 +181,38 @@ namespace Project2
             IsAddPopupOpen = true;
         }
 
+        private void ExecuteHandleCommands(object parameter)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Файлы команд|*.txt";
+
+            if (openFileDialog.ShowDialog() == false)
+                return;
+
+            try
+            {
+                InstructionParser parser = new();
+                List<IInstruction> insts = parser.ParseCommands(openFileDialog.FileName);
+
+                foreach (IInstruction inst in insts)
+                {
+                    try
+                    {
+                        inst.Execute(this);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogEntries.Add($"Ошибка при выполнении команды: {ex.Message}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogEntries.Add($"Ошибка при парсинге файла команд: {ex.Message}");
+                MessageBox.Show("Не удалось разобрать файл команд.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void ExecuteSaveNewTopic(object parameter)
         {
             if (string.IsNullOrWhiteSpace(NewStudentName) ||
@@ -187,7 +225,7 @@ namespace Project2
                 }
 
 
-            var newTopic = new Topic(
+            Topic newTopic = new Topic(
                 NewStudentName.Trim(),
                 NewTopicName.Trim(),
                 DateOnly.FromDateTime(NewDate.Value)

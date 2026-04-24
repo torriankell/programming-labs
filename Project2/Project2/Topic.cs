@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+namespace Project2;
+
 public class Topic : INotifyPropertyChanged
 {
     private string _studentName;
