@@ -1,0 +1,2 @@
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Release\net8.0\publish\win-x64\GammaCiphering.pdb
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Release\net8.0\publish\win-x64\GammaCiphering.exe

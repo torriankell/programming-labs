@@ -10,7 +10,6 @@ namespace Project2.Tests
         [TestMethod]
         public void BuildTopicFromStrings_ValidData_ReturnsTopic()
         {
-            // Изменено: добавлено 4-е поле (преподаватель)
             string input = "Nikolay the Second;Математика;2024.03.31;Иванов И.И.";
             var result = TopicParser.BuildTopicFromStrings(input);
 
@@ -33,7 +32,6 @@ namespace Project2.Tests
         [ExpectedException(typeof(FormatException))]
         public void BuildTopicFromStrings_OnlyTwoFields_ThrowsFormatException()
         {
-            // 2 поля — всё ещё ошибка
             TopicParser.BuildTopicFromStrings("Иванов;Математика");
         }
 
@@ -41,7 +39,6 @@ namespace Project2.Tests
         [ExpectedException(typeof(FormatException))]
         public void BuildTopicFromStrings_ThreeFields_ThrowsFormatException()
         {
-            // 3 поля теперь тоже ошибка (ожидается 4)
             TopicParser.BuildTopicFromStrings("Иванов;Математика;2024.03.31");
         }
 
@@ -93,7 +90,6 @@ namespace Project2.Tests
         [TestMethod]
         public void BuildTopicFromStrings_WithSpaces_TrimsCorrectly()
         {
-            // Добавлен преподаватель с пробелами
             var result = TopicParser.BuildTopicFromStrings("  Иванов Иван  ;  Математика  ; 2024.03.31;  Иванов И.И.  ");
 
             Assert.IsNotNull(result);

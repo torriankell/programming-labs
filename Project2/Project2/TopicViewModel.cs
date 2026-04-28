@@ -10,7 +10,7 @@ namespace Project2
 {
     public class TopicViewModel : INotifyPropertyChanged
     {
-        private const string LOG_PATH = "C:\\Users\\Man\\Desktop\\labs\\programming-labs\\Project2\\errors.log";
+        private const string LOG_PATH = "C:\\Users\\User\\source\\repos\\Project2\\errors.log";
 
         private RelayCommand _loadTopicCommand;
         private RelayCommand _removeTopicCommand;

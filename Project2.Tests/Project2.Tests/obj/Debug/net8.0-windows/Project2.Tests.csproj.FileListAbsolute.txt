@@ -351,3 +351,4 @@ C:\Users\Man\Desktop\labs\programming-labs\Project2.Tests\Project2.Tests\obj\Deb
 C:\Users\Man\Desktop\labs\programming-labs\Project2.Tests\Project2.Tests\obj\Debug\net8.0-windows\Project2.Tests.pdb
 C:\Users\Man\Desktop\labs\programming-labs\Project2.Tests\Project2.Tests\obj\Debug\net8.0-windows\Project2.Tests.genruntimeconfig.cache
 C:\Users\Man\Desktop\labs\programming-labs\Project2.Tests\Project2.Tests\obj\Debug\net8.0-windows\ref\Project2.Tests.dll
+C:\Users\User\source\repos\Project2.Tests\Project2.Tests\obj\Debug\net8.0-windows\Project2.Tests.sourcelink.json
