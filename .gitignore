@@ -1,8 +1,8 @@
 .vs
 .vs/
 .gitignore
-./ConsoleApp1
-./GammaCiphering
-./FrequencyAnalysis
-./WpfApp1
-./WpfApp2
+.ConsoleApp1/
+.GammaCiphering/
+.FrequencyAnalysis/
+.WpfApp1/
+.WpfApp2/
