@@ -12,7 +12,7 @@ namespace Project2
                 throw new ArgumentException("Строка пуста");
 
             string[] buffer = topic.Split(SEPARATOR);
-            if (buffer.Length != 3)
+            if (buffer.Length != 4)
                 throw new FormatException($"Ожидалось 3 поля, получено {buffer.Length}");
 
             if (string.IsNullOrWhiteSpace(buffer[0]))
@@ -21,6 +21,9 @@ namespace Project2
             if (string.IsNullOrWhiteSpace(buffer[1]))
                 throw new ArgumentException("Название темы пусто");
 
+            if (string.IsNullOrWhiteSpace(buffer[3]))
+                throw new ArgumentException("Имя преподавателя пусто");
+
             if (!DateOnly.TryParseExact(buffer[2].Trim(), "yyyy.MM.dd",
                 System.Globalization.CultureInfo.InvariantCulture,
                 System.Globalization.DateTimeStyles.None, out DateOnly date))
@@ -28,8 +31,9 @@ namespace Project2
 
             string stuName = buffer[0].Trim();
             string topicName = buffer[1].Trim();
+            string teacherName = buffer[3].Trim();
 
-            return new Topic(stuName, topicName, date);
+            return new Topic(stuName, topicName, date, teacherName);
         }
     }
 }

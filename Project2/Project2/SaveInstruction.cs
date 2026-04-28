@@ -19,7 +19,7 @@ namespace Project2
             using (StreamWriter sw = new StreamWriter(tokens[0], false))
             {
                 foreach (Topic t in tvm.Topics)
-                    sw.Write($"{t.StudentName};{t.TopicName};{t.Date:yyyy.MM.dd}\n");
+                    sw.Write($"{t.StudentName};{t.TopicName};{t.Date:yyyy.MM.dd};{t.TeacherName}\n");
             }
             MessageBox.Show($"Файл сохранён: {Path.GetFullPath(tokens[0])}");
         }

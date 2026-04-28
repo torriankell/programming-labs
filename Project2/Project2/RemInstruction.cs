@@ -32,6 +32,7 @@
                 "StudentName" => topic.StudentName,
                 "TopicName" => topic.TopicName,
                 "Date" => topic.Date,
+                "TeacherName" => topic.TeacherName,
                 _ => throw new ArgumentException($"Неизвестное поле: {field}")
             };
 
@@ -40,6 +41,7 @@
                 "StudentName" => val,
                 "TopicName" => val,
                 "Date" => DateOnly.Parse(val),
+                "TeacherName" => val,
                 _ => null
             };
 

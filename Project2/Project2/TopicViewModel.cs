@@ -19,6 +19,7 @@ namespace Project2
         private RelayCommand _cancelAddCommand;
         private RelayCommand _handleFileWCommandsCommand;
 
+
         private Topic _topic;
 
         private bool _isAddPopupOpen;
@@ -34,6 +35,17 @@ namespace Project2
         }
 
         private Logger logger;
+
+        private string _newTeacherName;
+        public string NewTeacherName
+        {
+            get => _newTeacherName;
+            set
+            {
+                _newTeacherName = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string _newStudentName;
         public string NewStudentName
@@ -177,6 +189,7 @@ namespace Project2
         {
             NewStudentName = "";
             NewTopicName = "";
+            NewTeacherName = "";
             NewDate = DateTime.Today;
             IsAddPopupOpen = true;
         }
@@ -228,7 +241,8 @@ namespace Project2
             Topic newTopic = new Topic(
                 NewStudentName.Trim(),
                 NewTopicName.Trim(),
-                DateOnly.FromDateTime(NewDate.Value)
+                DateOnly.FromDateTime(NewDate.Value),
+                NewTeacherName.Trim()
             );
 
             Topics.Add(newTopic);

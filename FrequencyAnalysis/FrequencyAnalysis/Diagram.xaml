@@ -1,0 +1,15 @@
+﻿<Window x:Class="FrequencyAnalysis.Diagram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FrequencyAnalysis"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="Гистограмма" Height="450" Width="800">
+    <Grid>
+        <oxy:PlotView Model="{Binding PlotModel}" />
+
+
+    </Grid>
+</Window>

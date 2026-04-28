@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Debug\net8.0\GammaCiphering.exe
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Debug\net8.0\GammaCiphering.deps.json
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Debug\net8.0\GammaCiphering.runtimeconfig.json
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Debug\net8.0\GammaCiphering.dll
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\bin\Debug\net8.0\GammaCiphering.pdb
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.AssemblyInfo.cs
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.dll
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\refint\GammaCiphering.dll
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.pdb
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.genruntimeconfig.cache
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\ref\GammaCiphering.dll
+C:\Users\User\source\repos\GammaCiphering\GammaCiphering\obj\Debug\net8.0\GammaCiphering.sourcelink.json

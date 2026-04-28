@@ -9,6 +9,13 @@ public class Topic : INotifyPropertyChanged
     private string _topicName;
     private DateOnly _date;
 
+    private string _teacherName;
+    public string TeacherName
+    {
+        get => _teacherName;
+        set { _teacherName = value; OnPropertyChanged(); }
+    }
+
     public string StudentName
     {
         get { return _studentName; }
@@ -43,11 +50,12 @@ public class Topic : INotifyPropertyChanged
     {
 
     }
-    public Topic(string studentName, string topicName, DateOnly date)
+    public Topic(string studentName, string topicName, DateOnly date, string teacherName)
     {
         StudentName = studentName;
         TopicName = topicName;
         Date = date;
+        TeacherName = teacherName;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

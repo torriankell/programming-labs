@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\Lab1w\Lab1w\bin\Debug\net8.0\Lab1w.exe
+C:\Users\User\source\repos\Lab1w\Lab1w\bin\Debug\net8.0\Lab1w.deps.json
+C:\Users\User\source\repos\Lab1w\Lab1w\bin\Debug\net8.0\Lab1w.runtimeconfig.json
+C:\Users\User\source\repos\Lab1w\Lab1w\bin\Debug\net8.0\Lab1w.dll
+C:\Users\User\source\repos\Lab1w\Lab1w\bin\Debug\net8.0\Lab1w.pdb
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.AssemblyInfo.cs
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.dll
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\refint\Lab1w.dll
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.pdb
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\Lab1w.genruntimeconfig.cache
+C:\Users\User\source\repos\Lab1w\Lab1w\obj\Debug\net8.0\ref\Lab1w.dll
